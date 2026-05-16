@@ -14,18 +14,6 @@ const Navbar = () => {
 
   const navLinks = [
     { name: t.nav.home, href: '/' },
-    { 
-      name: t.nav.license, 
-      href: '#services', 
-      hasDropdown: true, 
-      items: t.nav.licenseItems 
-    },
-    { 
-      name: t.nav.registration, 
-      href: '#process', 
-      hasDropdown: true, 
-      items: t.nav.registrationItems 
-    },
     { name: t.nav.contact, href: '#contact' },
   ];
 
