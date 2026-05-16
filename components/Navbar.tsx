@@ -7,12 +7,19 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useLanguage } from '@/context/LanguageContext';
 import { Menu, X, ChevronDown, Languages } from 'lucide-react';
 
+interface NavLinkItem {
+  name: string;
+  href: string;
+  hasDropdown?: boolean;
+  items?: string[];
+}
+
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const { language, setLanguage, t } = useLanguage();
 
-  const navLinks = [
+  const navLinks: NavLinkItem[] = [
     { name: t.nav.home, href: '/' },
     { name: t.nav.contact, href: '#contact' },
   ];
@@ -61,7 +68,7 @@ const Navbar = () => {
                     transition={{ duration: 0.2 }}
                     className="absolute top-full left-0 w-56 bg-white rounded-xl shadow-xl border border-slate-100 p-2 z-50"
                   >
-                    {link.items.map((item: string) => (
+                    {link.items?.map((item: string) => (
                       <Link
                         key={item}
                         href={link.href}
@@ -137,7 +144,7 @@ const Navbar = () => {
                   {/* Mobile Dropdown Items */}
                   {link.hasDropdown && activeDropdown === link.name && (
                     <div className="bg-slate-50/50 rounded-lg mt-1 p-2 flex flex-col">
-                      {link.items.map((item: string) => (
+                      {link.items?.map((item: string) => (
                         <Link 
                           key={item} 
                           href={link.href}
