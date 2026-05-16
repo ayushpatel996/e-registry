@@ -3,17 +3,29 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useLanguage } from '@/context/LanguageContext';
 import { Menu, X, ChevronDown, Languages } from 'lucide-react';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const { language, setLanguage, t } = useLanguage();
 
   const navLinks = [
     { name: t.nav.home, href: '/' },
-    { name: t.nav.license, href: '#services', hasDropdown: true },
-    { name: t.nav.registration, href: '#process', hasDropdown: true },
+    { 
+      name: t.nav.license, 
+      href: '#services', 
+      hasDropdown: true, 
+      items: t.nav.licenseItems 
+    },
+    { 
+      name: t.nav.registration, 
+      href: '#process', 
+      hasDropdown: true, 
+      items: t.nav.registrationItems 
+    },
     { name: t.nav.contact, href: '#contact' },
   ];
 
@@ -32,20 +44,53 @@ const Navbar = () => {
         {/* Desktop Nav */}
         <div className="hidden lg:flex items-center gap-6">
           {navLinks.map((link) => (
-            <div key={link.name} className="relative group">
+            <div 
+              key={link.name} 
+              className="relative"
+              onMouseEnter={() => link.hasDropdown && setActiveDropdown(link.name)}
+              onMouseLeave={() => setActiveDropdown(null)}
+            >
               <Link 
                 href={link.href} 
-                className="text-[13px] font-bold flex items-center gap-1 hover:text-accent transition-colors"
+                className="text-[13px] font-bold flex items-center gap-1 hover:text-accent transition-colors py-2"
               >
                 {link.name}
-                {link.hasDropdown && <ChevronDown size={14} />}
+                {link.hasDropdown && (
+                  <ChevronDown 
+                    size={14} 
+                    className={`transition-transform duration-300 ${activeDropdown === link.name ? 'rotate-180' : ''}`} 
+                  />
+                )}
               </Link>
+
+              {/* Dropdown Menu */}
+              <AnimatePresence>
+                {link.hasDropdown && activeDropdown === link.name && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 10 }}
+                    transition={{ duration: 0.2 }}
+                    className="absolute top-full left-0 w-56 bg-white rounded-xl shadow-xl border border-slate-100 p-2 z-50"
+                  >
+                    {link.items.map((item: string) => (
+                      <Link
+                        key={item}
+                        href={link.href}
+                        className="block px-4 py-2.5 text-sm font-semibold text-slate-600 hover:bg-slate-50 hover:text-accent rounded-lg transition-colors"
+                      >
+                        {item}
+                      </Link>
+                    ))}
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </div>
           ))}
           
           <button 
             onClick={() => setLanguage(language === 'en' ? 'hi' : 'en')}
-            className="flex items-center gap-2 text-[13px] font-bold text-primary hover:text-accent border border-gray-200 px-3 py-1.5 rounded-full transition-all"
+            className="flex items-center gap-2 text-[13px] font-bold text-primary hover:text-accent border border-gray-200 px-3 py-1.5 rounded-full transition-all ml-2"
           >
             <Languages size={16} />
             {language === 'en' ? 'हिन्दी' : 'English'}
@@ -71,30 +116,66 @@ const Navbar = () => {
       </div>
 
       {/* Mobile Menu */}
-      {isOpen && (
-        <div className="lg:hidden glass border-t border-gray-100 p-4 flex flex-col gap-2 animate-in slide-in-from-top-2 duration-300">
-          {navLinks.map((link) => (
-            <Link 
-              key={link.name} 
-              href={link.href} 
-              onClick={() => setIsOpen(false)}
-              className="text-base font-bold py-3 border-b border-gray-50 flex justify-between items-center"
-            >
-              {link.name}
-              {link.hasDropdown && <ChevronDown size={16} />}
-            </Link>
-          ))}
-          <div className="pt-4">
-            <Link 
-              href="tel:+919098476107" 
-              className="btn btn-accent w-full text-center py-4"
-              onClick={() => setIsOpen(false)}
-            >
-              {t.nav.callNow}
-            </Link>
-          </div>
-        </div>
-      )}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div 
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: 'auto', opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            className="lg:hidden glass border-t border-gray-100 overflow-hidden"
+          >
+            <div className="p-4 flex flex-col gap-2">
+              {navLinks.map((link) => (
+                <div key={link.name}>
+                  <div 
+                    className="flex justify-between items-center py-3 border-b border-gray-50 cursor-pointer"
+                    onClick={() => link.hasDropdown ? setActiveDropdown(activeDropdown === link.name ? null : link.name) : setIsOpen(false)}
+                  >
+                    <Link 
+                      href={link.href} 
+                      className="text-base font-bold"
+                      onClick={(e) => link.hasDropdown && e.stopPropagation()}
+                    >
+                      {link.name}
+                    </Link>
+                    {link.hasDropdown && (
+                      <ChevronDown 
+                        size={18} 
+                        className={`transition-transform duration-300 ${activeDropdown === link.name ? 'rotate-180' : ''}`}
+                      />
+                    )}
+                  </div>
+                  
+                  {/* Mobile Dropdown Items */}
+                  {link.hasDropdown && activeDropdown === link.name && (
+                    <div className="bg-slate-50/50 rounded-lg mt-1 p-2 flex flex-col">
+                      {link.items.map((item: string) => (
+                        <Link 
+                          key={item} 
+                          href={link.href}
+                          onClick={() => { setIsOpen(false); setActiveDropdown(null); }}
+                          className="py-2.5 px-4 text-sm font-semibold text-slate-500"
+                        >
+                          {item}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              ))}
+              <div className="pt-4">
+                <Link 
+                  href="tel:+919098476107" 
+                  className="btn btn-accent w-full text-center py-4"
+                  onClick={() => setIsOpen(false)}
+                >
+                  {t.nav.callNow}
+                </Link>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </nav>
   );
 };
