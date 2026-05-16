@@ -3,19 +3,21 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Menu, X, ChevronDown } from 'lucide-react';
+import { useLanguage } from '@/context/LanguageContext';
+import { Menu, X, ChevronDown, Languages } from 'lucide-react';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const { language, setLanguage, t } = useLanguage();
 
   const navLinks = [
-    { name: 'HOME', href: '/' },
-    { name: 'LICENSE', href: '#', hasDropdown: true },
-    { name: 'REGISTRATION', href: '#', hasDropdown: true },
-    { name: 'NGO', href: '#', hasDropdown: true },
-    { name: 'DSC', href: '#', hasDropdown: true },
-    { name: 'ISO', href: '#', hasDropdown: true },
-    { name: 'CONTACT US', href: '#contact' },
+    { name: t.nav.home, href: '/' },
+    { name: t.nav.license, href: '#', hasDropdown: true },
+    { name: t.nav.registration, href: '#', hasDropdown: true },
+    { name: t.nav.ngo, href: '#', hasDropdown: true },
+    { name: t.nav.dsc, href: '#', hasDropdown: true },
+    { name: t.nav.iso, href: '#', hasDropdown: true },
+    { name: t.nav.contact, href: '#contact' },
   ];
 
   return (
@@ -30,7 +32,7 @@ const Navbar = () => {
         </Link>
 
         {/* Desktop Nav */}
-        <div className="hidden md:flex items-center gap-8" style={{ display: 'flex', alignItems: 'center', gap: '2rem' }}>
+        <div className="hidden md:flex items-center gap-6" style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
           {navLinks.map((link) => (
             <div key={link.name} className="relative group" style={{ position: 'relative' }}>
               <Link 
@@ -43,8 +45,18 @@ const Navbar = () => {
               </Link>
             </div>
           ))}
+          
+          <button 
+            onClick={() => setLanguage(language === 'en' ? 'hi' : 'en')}
+            className="flex items-center gap-2 text-sm font-bold text-primary hover:text-accent"
+            style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontWeight: '700', cursor: 'pointer', background: 'none', border: '1px solid var(--border)', padding: '0.25rem 0.75rem', borderRadius: '2rem' }}
+          >
+            <Languages size={16} />
+            {language === 'en' ? 'हिन्दी' : 'English'}
+          </button>
+
           <Link href="tel:+919098476107" className="btn btn-accent" style={{ padding: '0.5rem 1.5rem', borderRadius: '0.25rem' }}>
-            CALL NOW
+            {t.nav.callNow}
           </Link>
         </div>
 

@@ -45,7 +45,7 @@ const Footer = () => {
               </li>
               <li style={{ display: 'flex', gap: '1rem' }}>
                 <MapPin className="text-accent" size={20} style={{ color: 'var(--accent)' }} />
-                <span>MP Nagar, Zone-1, Bhopal (M.P.) 462011</span>
+                <span>Sagar, Madhya Pradesh (M.P.) 470001</span>
               </li>
             </ul>
           </div>

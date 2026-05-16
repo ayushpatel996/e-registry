@@ -3,46 +3,49 @@
 import React from 'react';
 import { Home, Building2, Map, Factory, UserPlus, Landmark } from 'lucide-react';
 import { motion } from 'framer-motion';
-
-const services = [
-  {
-    title: "Residential Property",
-    desc: "Expert registry services for plots, flats, and independent houses.",
-    icon: <Home size={32} />,
-  },
-  {
-    title: "Commercial Property",
-    desc: "Legal documentation and registry for shops, offices, and commercial complexes.",
-    icon: <Building2 size={32} />,
-  },
-  {
-    title: "Agricultural Land",
-    desc: "Complete assistance in agricultural land registry and revenue records.",
-    icon: <Map size={32} />,
-  },
-  {
-    title: "Industrial Premises",
-    desc: "Registration services for industrial plots, sheds, and factory buildings.",
-    icon: <Factory size={32} />,
-  },
-  {
-    title: "Registry for Builders",
-    desc: "Specialized services for real estate developers and large-scale projects.",
-    icon: <UserPlus size={32} />,
-  },
-  {
-    title: "Banking & Finance",
-    desc: "E-registry services specifically tailored for banks and financial institutions.",
-    icon: <Landmark size={32} />,
-  },
-];
+import { useLanguage } from '@/context/LanguageContext';
 
 const Services = () => {
+  const { t } = useLanguage();
+
+  const services = [
+    {
+      title: t.services.residential.title,
+      desc: t.services.residential.desc,
+      icon: <Home size={32} />,
+    },
+    {
+      title: t.services.commercial.title,
+      desc: t.services.commercial.desc,
+      icon: <Building2 size={32} />,
+    },
+    {
+      title: t.services.agricultural.title,
+      desc: t.services.agricultural.desc,
+      icon: <Map size={32} />,
+    },
+    {
+      title: t.services.industrial.title,
+      desc: t.services.industrial.desc,
+      icon: <Factory size={32} />,
+    },
+    {
+      title: t.services.builders.title,
+      desc: t.services.builders.desc,
+      icon: <UserPlus size={32} />,
+    },
+    {
+      title: t.services.banking.title,
+      desc: t.services.banking.desc,
+      icon: <Landmark size={32} />,
+    },
+  ];
+
   return (
     <section id="services" className="section bg-alt" style={{ background: 'var(--bg-alt)' }}>
       <div className="container">
         <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
-          <h2 style={{ fontSize: '2.5rem' }}>Our Services Includes</h2>
+          <h2 style={{ fontSize: '2.5rem' }}>{t.services.title}</h2>
           <div style={{ width: '80px', height: '4px', background: 'var(--accent)', margin: '0 auto' }}></div>
         </div>
 

@@ -1,0 +1,148 @@
+export const translations = {
+  en: {
+    nav: {
+      home: "HOME",
+      license: "LICENSE",
+      registration: "REGISTRATION",
+      ngo: "NGO",
+      dsc: "DSC",
+      iso: "ISO",
+      contact: "CONTACT US",
+      callNow: "CALL NOW",
+    },
+    hero: {
+      badge: "AUTHORIZED E-REGISTRY PROVIDER",
+      title1: "Property Registry",
+      title2: "License Owner",
+      desc: "Authorized Registry License Owner in Sagar. We provide expert consultancy for property registration, sell deeds, and legal documentation with the Department of Registration and Stamps.",
+      ctaTalk: "Talk to an Expert",
+      ctaServices: "Our Services",
+      stats: "Successful Registrations",
+    },
+    services: {
+      title: "Our Services Includes",
+      residential: {
+        title: "Residential Property",
+        desc: "Expert registry services for plots, flats, and independent houses.",
+      },
+      commercial: {
+        title: "Commercial Property",
+        desc: "Legal documentation and registry for shops, offices, and commercial complexes.",
+      },
+      agricultural: {
+        title: "Agricultural Land",
+        desc: "Complete assistance in agricultural land registry and revenue records.",
+      },
+      industrial: {
+        title: "Industrial Premises",
+        desc: "Registration services for industrial plots, sheds, and factory buildings.",
+      },
+      builders: {
+        title: "Registry for Builders",
+        desc: "Specialized services for real estate developers and large-scale projects.",
+      },
+      banking: {
+        title: "Banking & Finance",
+        desc: "E-registry services specifically tailored for banks and financial institutions.",
+      },
+    },
+    process: {
+      title: "How We Do Property E-Registry?",
+      callbackTitle: "Ask for a Call Back",
+      callbackDesc: "Need expert advice? Leave your number and we'll call you back shortly.",
+      namePlaceholder: "Your Name",
+      phonePlaceholder: "Phone Number",
+      btnRequest: "REQUEST CALL",
+      officeTitle: "Visit Our Office",
+      steps: [
+        "Property Buyer or Seller have to visit our office with old Registry photo copy.",
+        "Write-down latest Ward No. or Patwari Halka No. of that Property.",
+        "Provide us all details and Selling Price of that Property.",
+        "We will put all property details at MPIGR Portal for fee calculation.",
+        "We will provide you computer generated 'Fee Calculation' page.",
+        "You have to provide us all registry related documents as per the requirement.",
+        "We will create a profile at MPIGR Portal for E-Registry of Property with Buyer and Seller Details.",
+        "We will create a sell deed and give that to buyer and seller for final approval.",
+        "Buyer or Seller have to pay us Stamp Fee + Registration Fee + Our Fee.",
+        "We will upload the final Sale Deed at MPIGR Portal, pay the Stamp Fee.",
+        "We will provide final computer generated Declaration page for Buyer, Seller and Two Witness.",
+        "We will scan and upload Declaration page and then pay Registration Fees.",
+        "We will book SLOT for final E-Registry process at Registry Office.",
+        "Buyer and Seller have to present at Registry Office with Two Witness for final registry at SLOT Booking time."
+      ],
+    },
+  },
+  hi: {
+    nav: {
+      home: "मुख्य पृष्ठ",
+      license: "लाइसेंस",
+      registration: "पंजीकरण",
+      ngo: "एनजीओ",
+      dsc: "डीएससी",
+      iso: "आईएसओ",
+      contact: "संपर्क करें",
+      callNow: "अभी कॉल करें",
+    },
+    hero: {
+      badge: "अधिकृत ई-रजिस्ट्री प्रदाता",
+      title1: "प्रॉपर्टी रजिस्ट्री",
+      title2: "लाइसेंस धारक",
+      desc: "सागर में अधिकृत रजिस्ट्री लाइसेंस धारक। हम पंजीकरण और मुद्रांक विभाग के साथ संपत्ति पंजीकरण, बिक्री विलेख और कानूनी दस्तावेजों के लिए विशेषज्ञ परामर्श प्रदान करते हैं।",
+      ctaTalk: "विशेषज्ञ से बात करें",
+      ctaServices: "हमारी सेवाएं",
+      stats: "सफल पंजीकरण",
+    },
+    services: {
+      title: "हमारी सेवाओं में शामिल हैं",
+      residential: {
+        title: "आवासीय संपत्ति",
+        desc: "प्लॉट, फ्लैट और स्वतंत्र घरों के लिए विशेषज्ञ रजिस्ट्री सेवाएं।",
+      },
+      commercial: {
+        title: "वाणिज्यिक संपत्ति",
+        desc: "दुकानों, कार्यालयों और वाणिज्यिक परिसरों के लिए कानूनी दस्तावेज और रजिस्ट्री।",
+      },
+      agricultural: {
+        title: "कृषि भूमि",
+        desc: "कृषि भूमि रजिस्ट्री और राजस्व रिकॉर्ड में पूर्ण सहायता।",
+      },
+      industrial: {
+        title: "औद्योगिक परिसर",
+        desc: "औद्योगिक भूखंडों, शेडों और कारखाने की इमारतों के लिए पंजीकरण सेवाएं।",
+      },
+      builders: {
+        title: "बिल्डरों के लिए रजिस्ट्री",
+        desc: "रियल एस्टेट डेवलपर्स और बड़े पैमाने की परियोजनाओं के लिए विशेष सेवाएं।",
+      },
+      banking: {
+        title: "बैंकिंग और वित्त",
+        desc: "बैंकों और वित्तीय संस्थानों के लिए विशेष रूप से तैयार ई-रजिस्ट्री सेवाएं।",
+      },
+    },
+    process: {
+      title: "हम प्रॉपर्टी ई-रजिस्ट्री कैसे करते हैं?",
+      callbackTitle: "कॉल बैक के लिए पूछें",
+      callbackDesc: "विशेषज्ञ की सलाह चाहिए? अपना नंबर छोड़ें और हम आपको जल्द ही कॉल करेंगे।",
+      namePlaceholder: "आपका नाम",
+      phonePlaceholder: "फ़ोन नंबर",
+      btnRequest: "कॉल का अनुरोध करें",
+      officeTitle: "हमारे कार्यालय आएं",
+      steps: [
+        "संपत्ति खरीदार या विक्रेता को पुरानी रजिस्ट्री फोटो कॉपी के साथ हमारे कार्यालय आना होगा।",
+        "उस संपत्ति का नवीनतम वार्ड नंबर या पटवारी हल्का नंबर लिख लें।",
+        "हमें उस संपत्ति के सभी विवरण और विक्रय मूल्य प्रदान करें।",
+        "हम शुल्क गणना के लिए एमपीआईजीआर (MPIGR) पोर्टल पर संपत्ति के सभी विवरण डालेंगे।",
+        "हम आपको कंप्यूटर जनित 'शुल्क गणना' (Fee Calculation) पृष्ठ प्रदान करेंगे।",
+        "आपको आवश्यकतानुसार हमें रजिस्ट्री से संबंधित सभी दस्तावेज प्रदान करने होंगे।",
+        "हम खरीदार और विक्रेता के विवरण के साथ संपत्ति की ई-रजिस्ट्री के लिए एमपीआईजीआर पोर्टल पर एक प्रोफाइल बनाएंगे।",
+        "हम एक बिक्री विलेख (Sell Deed) बनाएंगे और अंतिम अनुमोदन के लिए खरीदार और विक्रेता को देंगे।",
+        "खरीदार या विक्रेता को हमें स्टाम्प शुल्क + पंजीकरण शुल्क + हमारा शुल्क देना होगा।",
+        "हम एमपीआईजीआर पोर्टल पर अंतिम बिक्री विलेख अपलोड करेंगे, स्टाम्प शुल्क का भुगतान करेंगे।",
+        "हम खरीदार, विक्रेता और दो गवाहों के लिए अंतिम कंप्यूटर जनित घोषणा पत्र प्रदान करेंगे।",
+        "हम घोषणा पत्र को स्कैन और अपलोड करेंगे और फिर पंजीकरण शुल्क का भुगतान करेंगे।",
+        "हम रजिस्ट्री कार्यालय में अंतिम ई-रजिस्ट्री प्रक्रिया के लिए स्लॉट (SLOT) बुक करेंगे।",
+        "खरीदार और विक्रेता को स्लॉट बुकिंग के समय अंतिम रजिस्ट्री के लिए दो गवाहों के साथ रजिस्ट्री कार्यालय में उपस्थित होना होगा।"
+      ],
+    },
+  },
+};
