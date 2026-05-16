@@ -28,7 +28,7 @@ const Album = () => {
   const prev = () => setIndex((index - 1 + images.length) % images.length);
 
   return (
-    <div className="relative w-full h-[350px] md:h-[450px] lg:h-[500px] rounded-2xl overflow-hidden shadow-2xl">
+    <div className="relative w-full h-[350px] md:h-[500px] lg:h-[550px] rounded-2xl overflow-hidden shadow-2xl">
       <AnimatePresence mode="wait">
         <motion.div
           key={index}
