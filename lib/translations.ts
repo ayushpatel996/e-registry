@@ -15,7 +15,7 @@ export const translations = {
       title1: "Property",
       title2: "E-Registry Provider",
       desc: "Authorized E-Registry Provider in Sagar. Providing professional registry and legal documentation services for over 10 years with the Department of Registration and Stamps.",
-      ctaTalk: "Talk to an Expert",
+      ctaTalk: "Talk to Us",
       ctaServices: "Our Services",
       stats: "Successful Registrations",
     },

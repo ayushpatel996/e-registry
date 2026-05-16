@@ -7,7 +7,7 @@ import { Phone, Mail, MapPin, MessageCircle, Globe, Link as LinkIcon } from 'luc
 
 const Footer = () => {
   return (
-    <footer className="bg-primary text-white pt-20 pb-10">
+    <footer id="contact" className="bg-primary text-white pt-20 pb-10">
       <div className="container">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
           {/* Brand Column */}

@@ -22,7 +22,7 @@ const Process = () => {
   };
 
   return (
-    <section className="section bg-white">
+    <section id="process" className="section bg-white">
       <div className="container grid lg:grid-cols-5 gap-12 lg:gap-20 items-start">
         <div className="lg:col-span-3">
           <h2 className="text-3xl md:text-4xl font-bold mb-8">{t.process.title}</h2>
