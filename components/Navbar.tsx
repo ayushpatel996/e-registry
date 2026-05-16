@@ -22,23 +22,22 @@ const Navbar = () => {
 
   return (
     <nav className="glass sticky top-0 z-50 shadow-sm">
-      <div className="container flex items-center justify-between py-4" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-        <Link href="/" className="flex items-center gap-2" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-          <Image src="/logo.png" alt="Vipin Consultancy" width={50} height={50} className="object-contain" />
-          <div className="flex flex-col" style={{ display: 'flex', flexDirection: 'column' }}>
-            <span className="text-xl font-bold tracking-tight text-primary" style={{ fontSize: '1.25rem', fontWeight: '700', color: 'var(--primary)' }}>VIPIN</span>
-            <span className="text-xs font-semibold text-accent" style={{ fontSize: '0.75rem', fontWeight: '600', color: 'var(--accent)' }}>CONSULTANCY</span>
+      <div className="container flex items-center justify-between py-4">
+        <Link href="/" className="flex items-center gap-2">
+          <Image src="/logo.png" alt="Vipin Consultancy" width={40} height={40} className="object-contain" />
+          <div className="flex flex-col">
+            <span className="text-lg font-bold tracking-tight text-primary leading-none">VIPIN</span>
+            <span className="text-[10px] font-bold text-accent tracking-wider uppercase">CONSULTANCY</span>
           </div>
         </Link>
 
         {/* Desktop Nav */}
-        <div className="hidden md:flex items-center gap-6" style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
+        <div className="hidden lg:flex items-center gap-6">
           {navLinks.map((link) => (
-            <div key={link.name} className="relative group" style={{ position: 'relative' }}>
+            <div key={link.name} className="relative group">
               <Link 
                 href={link.href} 
-                className="text-sm font-bold flex items-center gap-1 hover:text-accent" 
-                style={{ fontSize: '0.875rem', fontWeight: '700', display: 'flex', alignItems: 'center', gap: '0.25rem' }}
+                className="text-[13px] font-bold flex items-center gap-1 hover:text-accent transition-colors"
               >
                 {link.name}
                 {link.hasDropdown && <ChevronDown size={14} />}
@@ -48,23 +47,56 @@ const Navbar = () => {
           
           <button 
             onClick={() => setLanguage(language === 'en' ? 'hi' : 'en')}
-            className="flex items-center gap-2 text-sm font-bold text-primary hover:text-accent"
-            style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontWeight: '700', cursor: 'pointer', background: 'none', border: '1px solid var(--border)', padding: '0.25rem 0.75rem', borderRadius: '2rem' }}
+            className="flex items-center gap-2 text-[13px] font-bold text-primary hover:text-accent border border-gray-200 px-3 py-1.5 rounded-full transition-all"
           >
             <Languages size={16} />
             {language === 'en' ? 'हिन्दी' : 'English'}
           </button>
 
-          <Link href="tel:+919098476107" className="btn btn-accent" style={{ padding: '0.5rem 1.5rem', borderRadius: '0.25rem' }}>
+          <Link href="tel:+919098476107" className="btn btn-accent text-[13px] py-2 px-6">
             {t.nav.callNow}
           </Link>
         </div>
 
         {/* Mobile Toggle */}
-        <button className="md:hidden" onClick={() => setIsOpen(!isOpen)} style={{ display: 'none' }}>
-          {isOpen ? <X /> : <Menu />}
-        </button>
+        <div className="flex items-center gap-4 lg:hidden">
+          <button 
+            onClick={() => setLanguage(language === 'en' ? 'hi' : 'en')}
+            className="text-primary p-2"
+          >
+            <Languages size={22} />
+          </button>
+          <button className="text-primary p-1" onClick={() => setIsOpen(!isOpen)}>
+            {isOpen ? <X size={30} /> : <Menu size={30} />}
+          </button>
+        </div>
       </div>
+
+      {/* Mobile Menu */}
+      {isOpen && (
+        <div className="lg:hidden glass border-t border-gray-100 p-4 flex flex-col gap-2 animate-in slide-in-from-top-2 duration-300">
+          {navLinks.map((link) => (
+            <Link 
+              key={link.name} 
+              href={link.href} 
+              onClick={() => setIsOpen(false)}
+              className="text-base font-bold py-3 border-b border-gray-50 flex justify-between items-center"
+            >
+              {link.name}
+              {link.hasDropdown && <ChevronDown size={16} />}
+            </Link>
+          ))}
+          <div className="pt-4">
+            <Link 
+              href="tel:+919098476107" 
+              className="btn btn-accent w-full text-center py-4"
+              onClick={() => setIsOpen(false)}
+            >
+              {t.nav.callNow}
+            </Link>
+          </div>
+        </div>
+      )}
     </nav>
   );
 };

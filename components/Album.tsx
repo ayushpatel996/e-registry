@@ -28,38 +28,64 @@ const Album = () => {
   const prev = () => setIndex((index - 1 + images.length) % images.length);
 
   return (
-    <div style={{ position: 'relative', width: '100%', height: '500px', borderRadius: '1rem', overflow: 'hidden', boxShadow: 'var(--shadow-lg)' }}>
+    <div className="relative w-full h-[350px] md:h-[450px] lg:h-[500px] rounded-2xl overflow-hidden shadow-2xl">
       <AnimatePresence mode="wait">
         <motion.div
           key={index}
-          initial={{ opacity: 0, x: 100 }}
+          initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
-          exit={{ opacity: 0, x: -100 }}
-          transition={{ duration: 0.5 }}
-          style={{ position: 'absolute', inset: 0 }}
+          exit={{ opacity: 0, x: -20 }}
+          transition={{ duration: 0.6, ease: "easeInOut" }}
+          className="absolute inset-0"
         >
           <Image 
             src={images[index].src} 
             alt={images[index].alt} 
             fill
             className="object-cover"
+            priority
           />
-          <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, padding: '1rem', background: 'linear-gradient(transparent, rgba(0,0,0,0.7))', color: 'white' }}>
-            <p style={{ fontSize: '0.875rem', fontWeight: '600' }}>{images[index].alt}</p>
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+          <div className="absolute bottom-0 left-0 right-0 p-8">
+            <motion.p 
+              initial={{ y: 10, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.2 }}
+              className="text-white text-lg font-bold tracking-wide"
+            >
+              {images[index].alt}
+            </motion.p>
           </div>
         </motion.div>
       </AnimatePresence>
 
-      <button onClick={prev} style={{ position: 'absolute', left: '10px', top: '50%', transform: 'translateY(-50%)', background: 'rgba(255,255,255,0.3)', border: 'none', borderRadius: '50%', padding: '0.5rem', cursor: 'pointer', color: 'white' }}>
-        <ChevronLeft size={24} />
-      </button>
-      <button onClick={next} style={{ position: 'absolute', right: '10px', top: '50%', transform: 'translateY(-50%)', background: 'rgba(255,255,255,0.3)', border: 'none', borderRadius: '50%', padding: '0.5rem', cursor: 'pointer', color: 'white' }}>
-        <ChevronRight size={24} />
-      </button>
+      {/* Navigation Buttons */}
+      <div className="absolute top-1/2 -translate-y-1/2 w-full flex justify-between px-4 z-30">
+        <button 
+          onClick={prev} 
+          className="p-3 rounded-full bg-white/20 hover:bg-white/40 text-white backdrop-blur-md transition-all border border-white/30"
+          aria-label="Previous slide"
+        >
+          <ChevronLeft size={24} />
+        </button>
+        <button 
+          onClick={next} 
+          className="p-3 rounded-full bg-white/20 hover:bg-white/40 text-white backdrop-blur-md transition-all border border-white/30"
+          aria-label="Next slide"
+        >
+          <ChevronRight size={24} />
+        </button>
+      </div>
 
-      <div style={{ position: 'absolute', bottom: '10px', right: '10px', display: 'flex', gap: '5px' }}>
+      {/* Indicators */}
+      <div className="absolute bottom-8 right-8 flex gap-2 z-30">
         {images.map((_, i) => (
-          <div key={i} style={{ width: '8px', height: '8px', borderRadius: '50%', background: i === index ? 'white' : 'rgba(255,255,255,0.5)' }}></div>
+          <button
+            key={i}
+            onClick={() => setIndex(i)}
+            className={`h-1.5 rounded-full transition-all duration-300 ${i === index ? 'w-8 bg-white' : 'w-2 bg-white/40'}`}
+            aria-label={`Go to slide ${i + 1}`}
+          />
         ))}
       </div>
     </div>

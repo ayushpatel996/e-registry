@@ -3,54 +3,77 @@
 import React from 'react';
 import Image from 'next/image';
 import { useLanguage } from '@/context/LanguageContext';
+import { CheckCircle2, PhoneCall, MapPin } from 'lucide-react';
 
 const Process = () => {
   const { t } = useLanguage();
 
   return (
-    <section className="section">
-      <div className="container grid grid-2" style={{ display: 'grid', gridTemplateColumns: '1.5fr 1fr', gap: '4rem', alignItems: 'start' }}>
-        <div>
-          <h2 style={{ fontSize: '2.5rem', marginBottom: '2rem' }}>{t.process.title}</h2>
-          <div className="flex flex-col gap-4" style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+    <section className="section bg-white">
+      <div className="container grid lg:grid-cols-5 gap-12 lg:gap-20 items-start">
+        <div className="lg:col-span-3">
+          <h2 className="text-3xl md:text-4xl font-bold mb-8">{t.process.title}</h2>
+          <div className="space-y-6">
             {t.process.steps.map((step: string, index: number) => (
-              <div key={index} style={{ display: 'flex', gap: '1rem', alignItems: 'flex-start' }}>
-                <div style={{ minWidth: '24px', height: '24px', borderRadius: '50%', background: 'var(--primary)', color: 'var(--white)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.75rem', fontWeight: 'bold' }}>
+              <div key={index} className="flex gap-4 items-start group">
+                <div className="mt-1 flex-shrink-0 w-8 h-8 rounded-full bg-primary/10 text-primary flex items-center justify-center font-bold text-sm group-hover:bg-primary group-hover:text-white transition-colors duration-300">
                   {index + 1}
                 </div>
-                <p style={{ fontSize: '0.95rem', color: 'var(--text-light)' }}>{step}</p>
+                <p className="text-slate-600 text-base md:text-lg leading-relaxed group-hover:text-slate-900 transition-colors">
+                  {step}
+                </p>
               </div>
             ))}
           </div>
         </div>
 
-        <div className="glass" style={{ padding: '2.5rem', borderRadius: '1rem', background: 'var(--primary)', color: 'var(--white)', position: 'sticky', top: '100px' }}>
-          <div style={{ position: 'relative', width: '100%', height: '250px', borderRadius: '0.5rem', overflow: 'hidden', marginBottom: '2rem' }}>
-            <Image src="/office.jpg" alt="Vipin Consultancy" fill className="object-cover" />
-          </div>
-          <h3 style={{ color: 'var(--white)', fontSize: '1.5rem', marginBottom: '1.5rem' }}>{t.process.callbackTitle}</h3>
-          <p style={{ marginBottom: '2rem', opacity: 0.9 }}>{t.process.callbackDesc}</p>
-          
-          <form style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-            <input 
-              type="text" 
-              placeholder={t.process.namePlaceholder} 
-              style={{ padding: '0.75rem', borderRadius: '0.25rem', border: 'none', background: 'rgba(255,255,255,0.1)', color: 'white', outline: 'none' }} 
-            />
-            <input 
-              type="tel" 
-              placeholder={t.process.phonePlaceholder} 
-              style={{ padding: '0.75rem', borderRadius: '0.25rem', border: 'none', background: 'rgba(255,255,255,0.1)', color: 'white', outline: 'none' }} 
-            />
-            <button className="btn btn-accent" style={{ width: '100%' }}>{t.process.btnRequest}</button>
-          </form>
+        <div className="lg:col-span-2 sticky top-28">
+          <div className="bg-primary p-8 md:p-10 rounded-3xl text-white shadow-2xl relative overflow-hidden">
+            {/* Background Decorative Circle */}
+            <div className="absolute -top-20 -right-20 w-64 h-64 bg-white/5 rounded-full"></div>
+            
+            <div className="relative z-10">
+              <div className="relative w-full h-56 rounded-2xl overflow-hidden mb-8 shadow-lg ring-4 ring-white/10">
+                <Image src="/office.jpg" alt="Vipin Consultancy Office" fill className="object-cover" />
+              </div>
+              
+              <div className="flex items-center gap-3 mb-4">
+                <PhoneCall className="text-accent-light" size={24} />
+                <h3 className="text-2xl font-bold">{t.process.callbackTitle}</h3>
+              </div>
+              <p className="mb-8 text-slate-300 leading-relaxed">{t.process.callbackDesc}</p>
+              
+              <form className="space-y-4">
+                <div className="space-y-1">
+                  <input 
+                    type="text" 
+                    placeholder={t.process.namePlaceholder} 
+                    className="w-full px-5 py-4 rounded-xl bg-white/10 border border-white/20 text-white placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-accent focus:bg-white/20 transition-all"
+                  />
+                </div>
+                <div className="space-y-1">
+                  <input 
+                    type="tel" 
+                    placeholder={t.process.phonePlaceholder} 
+                    className="w-full px-5 py-4 rounded-xl bg-white/10 border border-white/20 text-white placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-accent focus:bg-white/20 transition-all"
+                  />
+                </div>
+                <button type="button" className="btn btn-accent w-full py-4 text-lg">
+                  {t.process.btnRequest}
+                </button>
+              </form>
 
-          <div style={{ marginTop: '2.5rem', borderTop: '1px solid rgba(255,255,255,0.1)', paddingTop: '1.5rem' }}>
-            <h4 style={{ color: 'var(--white)', fontSize: '1.125rem' }}>{t.process.officeTitle}</h4>
-            <p style={{ opacity: 0.8, fontSize: '0.875rem' }}>
-              Vipin Consultancy<br />
-              Sagar, Madhya Pradesh<br />
-            </p>
+              <div className="mt-10 pt-8 border-t border-white/10">
+                <div className="flex items-center gap-3 mb-3">
+                  <MapPin className="text-accent-light" size={20} />
+                  <h4 className="text-lg font-bold">{t.process.officeTitle}</h4>
+                </div>
+                <p className="text-slate-400 text-sm leading-relaxed">
+                  Vipin Consultancy<br />
+                  Sagar, Madhya Pradesh
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
