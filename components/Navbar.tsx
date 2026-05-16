@@ -14,9 +14,6 @@ const Navbar = () => {
     { name: t.nav.home, href: '/' },
     { name: t.nav.license, href: '#services', hasDropdown: true },
     { name: t.nav.registration, href: '#process', hasDropdown: true },
-    { name: t.nav.ngo, href: '#services', hasDropdown: true },
-    { name: t.nav.dsc, href: '#services', hasDropdown: true },
-    { name: t.nav.iso, href: '#services', hasDropdown: true },
     { name: t.nav.contact, href: '#contact' },
   ];
 
