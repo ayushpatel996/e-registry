@@ -28,6 +28,7 @@ const Navbar = () => {
           <div className="flex flex-col">
             <span className="text-lg font-bold tracking-tight text-primary leading-none">VIPIN</span>
             <span className="text-[10px] font-bold text-accent tracking-wider uppercase">CONSULTANCY</span>
+            <span className="text-[8px] font-bold text-slate-400 uppercase tracking-tighter">Since 2015</span>
           </div>
         </Link>
 

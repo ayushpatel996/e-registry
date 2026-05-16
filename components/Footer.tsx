@@ -17,13 +17,14 @@ const Footer = () => {
                 <Image src="/logo.png" alt="Vipin Consultancy" width={40} height={40} className="object-contain" />
               </div>
               <div className="flex flex-col">
-                <span className="text-xl font-black tracking-tight leading-none">VIPIN</span>
-                <span className="text-[10px] font-bold text-accent-light tracking-widest uppercase">CONSULTANCY</span>
-              </div>
-            </Link>
-            <p className="text-slate-400 text-sm leading-relaxed">
-              Authorized E-Registry Provider in Sagar. Providing professional registry and legal documentation services for over 10 years.
-            </p>
+              <span className="text-xl font-black tracking-tight leading-none">VIPIN</span>
+              <span className="text-[10px] font-bold text-accent-light tracking-widest uppercase">CONSULTANCY</span>
+              <span className="text-[10px] font-bold text-slate-500 mt-1 uppercase tracking-tighter">Since 2015</span>
+            </div>
+          </Link>
+          <p className="text-slate-400 text-sm leading-relaxed">
+            Authorized E-Registry Provider in Sagar. Providing professional registry and legal documentation services for over 10 years.
+          </p>
             <div className="flex gap-4">
               <a href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-accent transition-colors">
                 <Globe size={18} />
