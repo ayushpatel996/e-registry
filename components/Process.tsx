@@ -68,10 +68,14 @@ const Process = () => {
                   <MapPin className="text-accent-light" size={20} />
                   <h4 className="text-lg font-bold">{t.process.officeTitle}</h4>
                 </div>
-                <p className="text-slate-400 text-sm leading-relaxed">
-                  Vipin Consultancy<br />
-                  Sagar, Madhya Pradesh
-                </p>
+                <a 
+                  href="https://maps.app.goo.gl/NqWVT7ng7bqoEoTQA" 
+                  target="_blank" 
+                  className="text-slate-400 text-sm leading-relaxed hover:text-white transition-colors"
+                >
+                  Shope no 31, First floor, Near Old Collectorate,<br />
+                  Clerk co-operative society building, Sagar 470002
+                </a>
               </div>
             </div>
           </div>

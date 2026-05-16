@@ -71,7 +71,13 @@ const Footer = () => {
                 <MapPin className="text-accent-light flex-shrink-0 mt-1" size={20} />
                 <div className="flex flex-col">
                   <span className="text-xs text-slate-500 uppercase font-bold tracking-wider">Location</span>
-                  <span className="text-slate-300">Sagar, Madhya Pradesh (M.P.) 470001</span>
+                  <a 
+                    href="https://maps.app.goo.gl/NqWVT7ng7bqoEoTQA" 
+                    target="_blank" 
+                    className="text-slate-300 hover:text-white transition-colors"
+                  >
+                    Shope no 31, First floor, Near Old Collectorate, Clerk co-operative society building, Sagar 470002
+                  </a>
                 </div>
               </li>
             </ul>
